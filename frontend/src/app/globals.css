@@ -4,9 +4,8 @@
   --beige: #f7efe2;
   --beige-soft: #fbf4ea;
   --warm-beige: #efe1cd;
-  --muted-text: #6f705f;
-  --border: rgba(78, 90, 63, 0.55);
-  --white: #ffffff;
+  --muted-text: #596049;
+  --border: rgba(47, 61, 43, 0.72);
 }
 
 * {
@@ -50,7 +49,7 @@ button {
   position: relative;
   min-height: 100dvh;
   overflow: hidden;
-  background: #fbf4ea;
+  background: var(--beige-soft);
 }
 
 .site-page::before {
@@ -85,22 +84,27 @@ button {
   height: 100%;
 }
 
+.hero__intro,
+.hero__signup {
+  width: 100%;
+}
+
 .hero__tagline {
   max-width: 590px;
-  margin-bottom: clamp(22px, 3vh, 36px);
+  margin-bottom: clamp(18px, 2.5vh, 28px);
   color: var(--forest-green);
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(50px, min(4.4vw, 7vh), 76px);
-  line-height: 0.94;
+  font-size: clamp(42px, min(3.7vw, 5.8vh), 64px);
+  line-height: 0.98;
   letter-spacing: -0.058em;
   text-wrap: balance;
 }
 
 .hero__logoWrap {
   position: relative;
-  width: min(405px, 92%, 42vh);
-  height: min(340px, 35vh);
-  margin-left: -14px;
+  width: min(440px, 96%, 46vh);
+  height: min(370px, 39vh);
+  margin-left: 0;
   overflow: hidden;
 }
 
@@ -115,7 +119,7 @@ button {
 }
 
 .hero__launch {
-  margin-top: clamp(18px, 2.5vh, 30px);
+  margin-top: clamp(16px, 2.2vh, 26px);
   color: var(--forest-green);
   font-size: clamp(18px, min(1.65vw, 2.7vh), 27px);
   font-weight: 800;
@@ -133,7 +137,7 @@ button {
 /* Notify Form */
 
 .notify-form {
-  width: min(500px, 100%);
+  width: min(470px, 100%);
   margin-top: clamp(22px, 3vh, 34px);
 }
 
@@ -142,7 +146,7 @@ button {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 155px;
   border: 1.5px solid var(--border);
-  background: rgba(255, 255, 255, 0.3);
+  background: var(--warm-beige);
   overflow: hidden;
 }
 
@@ -152,19 +156,19 @@ button {
   padding: 15px 20px;
   border: none;
   outline: none;
-  background: transparent;
+  background: var(--beige-soft);
   color: var(--deep-forest);
   font-size: 16px;
 }
 
 .notify-form__input::placeholder {
-  color: rgba(47, 61, 43, 0.54);
+  color: rgba(47, 61, 43, 0.68);
 }
 
 .notify-form__button {
   border: none;
-  background: var(--forest-green);
-  color: var(--white);
+  background: var(--deep-forest);
+  color: var(--beige-soft);
   font-size: 15px;
   font-weight: 800;
   letter-spacing: 0.06em;
@@ -173,7 +177,7 @@ button {
 }
 
 .notify-form__button:hover {
-  background: var(--deep-forest);
+  background: var(--forest-green);
 }
 
 .notify-form__button:active {
@@ -181,9 +185,10 @@ button {
 }
 
 .notify-form__message {
-  margin-top: 8px;
-  color: var(--deep-forest);
+  margin-top: 10px;
+  color: var(--forest-green);
   font-size: 14px;
+  font-weight: 700;
 }
 
 .hero__divider {
@@ -192,20 +197,20 @@ button {
   display: flex;
   align-items: center;
   gap: 22px;
-  opacity: 0.78;
+  opacity: 1;
 }
 
 .hero__divider span {
   height: 1px;
   flex: 1;
-  background: rgba(78, 90, 63, 0.36);
+  background: rgba(47, 61, 43, 0.52);
 }
 
 .hero__dividerLeaf {
-  width: 18px;
-  height: 18px;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
   object-fit: contain;
-  mix-blend-mode: multiply;
 }
 
 /* Full-bleed hero visual */
@@ -340,22 +345,31 @@ button {
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
+    gap: 0;
+    padding: 0;
+  }
+
+  .hero__signup {
+    width: 100%;
   }
 }
 
 @media (min-width: 1200px) and (min-height: 800px) {
   .hero__content {
     width: min(42vw, 640px);
-    transform: translateY(-2.5vh);
   }
 
   .hero__tagline {
-    font-size: clamp(58px, min(4.6vw, 7.2vh), 80px);
+    font-size: clamp(46px, min(3.8vw, 5.8vh), 66px);
   }
 
   .hero__logoWrap {
-    width: min(425px, 94%, 44vh);
-    height: min(355px, 37vh);
+    width: min(445px, 96%, 46vh);
+    height: min(375px, 39vh);
+  }
+
+  .hero__signup {
+    width: 100%;
   }
 
   .hero__imageGlow {
@@ -449,7 +463,7 @@ button {
   }
 
   .hero__logoWrap {
-    width: min(340px, 82%, 42vh);
+    width: min(340px, 84%, 42vh);
     height: min(280px, 34vh);
   }
 
@@ -504,6 +518,11 @@ button {
   .hero__content {
     width: 100%;
     margin: 0 auto;
+  }
+
+  .hero__intro,
+  .hero__signup {
+    width: 100%;
   }
 
   .hero__tagline {

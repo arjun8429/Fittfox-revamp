@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="FITT FOX leaf">
+  <defs>
+    <mask id="leaf-cutout">
+      <rect width="100" height="100" fill="white"/>
+      <path d="M27 82C37 56 52 37 77 20C55 42 41 61 31 87Z" fill="black"/>
+    </mask>
+  </defs>
+  <path
+    d="M25 83C16 55 30 28 79 10C86 7 91 11 90 19C86 57 65 78 31 91C28 92 27 88 25 83Z"
+    fill="#3f4d36"
+    mask="url(#leaf-cutout)"
+  />
+</svg>

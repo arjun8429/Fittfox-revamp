@@ -8,43 +8,47 @@ export default function HeroSection() {
   return (
     <section className="hero">
       <div className="hero__content">
-        <p className="hero__tagline">
-          Indian superfoods,
-          <br />
-          reimagined.
-        </p>
+        <div className="hero__intro">
+          <p className="hero__tagline">
+            Indian superfoods,
+            <br />
+            reimagined.
+          </p>
 
-        <div className="hero__logoWrap">
-          <Image
-            src="/images/logo/fittfox-logo-mark.webp"
-            alt="FITT FOX logo"
-            width={741}
-            height={697}
-            priority
-            draggable={false}
-            sizes="(max-width: 720px) 78vw, 420px"
-            className="hero__logo"
-          />
+          <div className="hero__logoWrap">
+            <Image
+              src="/images/logo/fittfox-logo-mark.webp"
+              alt="FITT FOX logo"
+              width={741}
+              height={697}
+              priority
+              draggable={false}
+              sizes="(max-width: 720px) 78vw, 420px"
+              className="hero__logo"
+            />
+          </div>
         </div>
 
-        <p className="hero__launch">{brand.launchText}</p>
+        <div className="hero__signup">
+          <p className="hero__launch">{brand.launchText}</p>
 
-        <p className="hero__description">
-          Better-for-you Indian nutrition, coming soon.
-        </p>
+          <p className="hero__description">
+            Better-for-you Indian nutrition, coming soon.
+          </p>
 
-        <NotifyForm />
+          <NotifyForm />
 
-        <div className="hero__divider">
-          <span />
-          <Image
-            src="/images/logo/fittfox-leaf-icon01.webp"
-            alt="FITT FOX leaf icon"
-            width={24}
-            height={24}
-            className="hero__dividerLeaf"
-          />
-          <span />
+          <div className="hero__divider">
+            <span />
+            <Image
+              src="/images/logo/fittfox-leaf.svg"
+              alt="FITT FOX leaf icon"
+              width={28}
+              height={28}
+              className="hero__dividerLeaf"
+            />
+            <span />
+          </div>
         </div>
       </div>
 

@@ -14,6 +14,15 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
+## Waitlist backend
+
+The Notify Me form submits to the Next.js API route at `/api/notify`, which
+forwards validated signups to Google Apps Script. Copy `.env.example` to
+`.env.local` and configure the two server-side environment variables.
+
+See [`../backend/google-apps-script/README.md`](../backend/google-apps-script/README.md)
+for Google Sheet, Apps Script, welcome email, and deployment setup.
+
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
 ## Learn More

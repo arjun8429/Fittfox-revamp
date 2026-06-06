@@ -1,11 +1,43 @@
 import { NextResponse } from "next/server";
+import { resolve4, resolve6, resolveMx } from "node:dns/promises";
+import { validateEmailAddress } from "@/utils/emailValidation";
 
-const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+export const runtime = "nodejs";
+
+function withTimeout(promise, milliseconds = 3000) {
+  let timeoutId;
+  const timeout = new Promise((_, reject) => {
+    timeoutId = setTimeout(
+      () => reject(new Error("DNS lookup timed out")),
+      milliseconds,
+    );
+  });
+
+  return Promise.race([promise, timeout]).finally(() => clearTimeout(timeoutId));
+}
+
+async function domainCanReceiveEmail(domain) {
+  try {
+    const records = await withTimeout(resolveMx(domain));
+    if (records.some((record) => record.exchange && record.exchange !== ".")) {
+      return true;
+    }
+  } catch (error) {
+    if (!["ENODATA", "ENOTFOUND"].includes(error.code)) return true;
+  }
+
+  try {
+    const records = await withTimeout(Promise.any([resolve4(domain), resolve6(domain)]));
+    return records.length > 0;
+  } catch {
+    return false;
+  }
+}
 
 export async function POST(request) {
   try {
     const body = await request.json();
-    const email = body.email?.trim().toLowerCase();
+    const validation = validateEmailAddress(body.email);
 
     // Silently accept bot submissions caught by the hidden form field.
     if (body.website) {
@@ -14,13 +46,21 @@ export async function POST(request) {
       });
     }
 
-    if (!email || email.length > 254 || !EMAIL_PATTERN.test(email)) {
+    if (validation.error) {
       return NextResponse.json(
-        { message: "Please enter a valid email address." },
+        { message: validation.error },
         { status: 400 },
       );
     }
 
+    if (!(await domainCanReceiveEmail(validation.domain))) {
+      return NextResponse.json(
+        { message: "Please use an email domain that can receive messages." },
+        { status: 400 },
+      );
+    }
+
+    const email = validation.email;
     const appsScriptUrl = process.env.GOOGLE_APPS_SCRIPT_URL;
     const sharedSecret = process.env.NOTIFY_SHARED_SECRET;
 

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { brand } from "@/constants/brand";
+import { validateEmailAddress } from "@/utils/emailValidation";
 
 export default function NotifyForm() {
   const [email, setEmail] = useState("");
@@ -11,8 +12,9 @@ export default function NotifyForm() {
   async function handleSubmit(event) {
     event.preventDefault();
 
-    if (!email.trim()) {
-      setMessage("Please enter your email address.");
+    const validation = validateEmailAddress(email);
+    if (validation.error) {
+      setMessage(validation.error);
       setStatus("error");
       return;
     }
@@ -29,7 +31,7 @@ export default function NotifyForm() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          email: email.trim(),
+          email: validation.email,
           website: formData.get("website"),
         }),
       });
@@ -49,6 +51,36 @@ export default function NotifyForm() {
     }
   }
 
+  function handleEmailChange(event) {
+    const nextEmail = event.target.value;
+    setEmail(nextEmail);
+
+    if (status === "error") {
+      setMessage("");
+      setStatus("idle");
+    }
+
+    const validation = validateEmailAddress(nextEmail);
+    if (
+      validation.error?.startsWith("Did you mean") ||
+      validation.error === "Please use a permanent email address." ||
+      validation.error === "Please enter your personal email address."
+    ) {
+      setMessage(validation.error);
+      setStatus("error");
+    }
+  }
+
+  function handleEmailBlur() {
+    if (!email.trim()) return;
+
+    const validation = validateEmailAddress(email);
+    if (validation.error) {
+      setMessage(validation.error);
+      setStatus("error");
+    }
+  }
+
   return (
     <form className="notify-form" onSubmit={handleSubmit}>
       <div className="notify-form__row">
@@ -56,7 +88,8 @@ export default function NotifyForm() {
           type="email"
           placeholder={brand.emailPlaceholder}
           value={email}
-          onChange={(event) => setEmail(event.target.value)}
+          onChange={handleEmailChange}
+          onBlur={handleEmailBlur}
           className="notify-form__input"
           autoComplete="email"
           required

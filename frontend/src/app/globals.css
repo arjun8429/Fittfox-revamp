@@ -1043,7 +1043,7 @@ button {
   }
 
   .hero__launch {
-    margin-top: clamp(2px, 1vw, 6px);
+    margin-top: clamp(14px, 4vw, 22px);
     max-width: 360px;
     margin-right: auto;
     margin-left: auto;
@@ -1239,7 +1239,7 @@ button {
   }
 
   .hero__launch {
-    margin-top: 0;
+    margin-top: 12px;
   }
 
   .hero__divider,

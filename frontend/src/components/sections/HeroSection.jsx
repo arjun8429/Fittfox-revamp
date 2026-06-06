@@ -16,11 +16,13 @@ export default function HeroSection() {
 
         <div className="hero__logoWrap">
           <Image
-            src="/images/logo/fittfox-logo01.png"
+            src="/images/logo/fittfox-logo-mark.webp"
             alt="FITT FOX logo"
-            width={620}
-            height={620}
+            width={741}
+            height={697}
             priority
+            draggable={false}
+            sizes="(max-width: 720px) 78vw, 420px"
             className="hero__logo"
           />
         </div>
@@ -36,10 +38,10 @@ export default function HeroSection() {
         <div className="hero__divider">
           <span />
           <Image
-            src="/images/logo/fittfox-leaf-icon01.png"
-            alt="Leaf icon"
-            width={18}
-            height={18}
+            src="/images/logo/fittfox-leaf-icon01.webp"
+            alt="FITT FOX leaf icon"
+            width={24}
+            height={24}
             className="hero__dividerLeaf"
           />
           <span />
@@ -50,16 +52,15 @@ export default function HeroSection() {
         <div className="hero__imageGlow" />
 
         <Image
-          src="/images/hero/hero-products.png"
-          alt="FITT FOX Indian superfoods product visual"
-          width={900}
-          height={700}
+          src="/images/hero/hero-products.webp"
+          alt="FITT FOX Indian superfoods product range"
+          width={1122}
+          height={1402}
           priority
+          sizes="(max-width: 768px) 92vw, 48vw"
           className="hero__image"
         />
       </div>
     </section>
   );
 }
-
-

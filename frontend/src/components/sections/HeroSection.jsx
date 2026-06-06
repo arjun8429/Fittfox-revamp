@@ -10,9 +10,7 @@ export default function HeroSection() {
       <div className="hero__content">
         <div className="hero__intro">
           <p className="hero__tagline">
-            Indian superfoods,
-            <br />
-            reimagined.
+            Indian superfoods, reimagined.
           </p>
 
           <div className="hero__logoWrap">

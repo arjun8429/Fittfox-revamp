@@ -530,6 +530,10 @@ button {
   text-align: center;
 }
 
+.hero__miniLogo {
+  display: none;
+}
+
 .hero__tagline {
   max-width: 590px;
   margin-bottom: clamp(30px, 4.5vh, 50px);
@@ -956,38 +960,89 @@ button {
 /* Mobile */
 
 @media (max-width: 720px) {
-  .site-page {
-    min-height: 100dvh;
-    overflow-x: hidden;
-    overflow-y: visible;
+  html,
+  body {
+    height: 100%;
+    overflow: hidden;
+    overscroll-behavior: none;
   }
 
-  .footer {
-    position: relative;
+  .site-page {
+    width: 100%;
+    height: 100dvh;
+    min-height: 0;
+    overflow: hidden;
   }
 
   .hero {
-    min-height: auto;
-    grid-template-columns: 1fr;
-    gap: 28px;
-    padding: 34px 20px 42px;
-    overflow: visible;
+    width: 100%;
+    height: 100dvh;
+    min-height: 0;
+    padding: max(18px, env(safe-area-inset-top)) 20px
+      max(16px, env(safe-area-inset-bottom));
+    overflow: hidden;
     text-align: center;
   }
 
+  .hero::after {
+    content: "";
+    position: absolute;
+    z-index: 3;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      to bottom,
+      var(--beige-soft) 0%,
+      var(--beige-soft) 55%,
+      rgba(251, 244, 234, 0.98) 59%,
+      rgba(251, 244, 234, 0.72) 63%,
+      transparent 69%
+    );
+  }
+
   .hero__content {
+    position: relative;
+    z-index: 4;
     width: 100%;
+    height: auto;
     margin: 0 auto;
+    padding: 0;
+    display: block;
   }
 
   .hero__intro,
   .hero__signup {
     width: 100%;
+    max-width: 390px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .hero__miniLogo {
+    width: clamp(46px, 12vw, 54px);
+    height: clamp(46px, 12vw, 54px);
+    margin: 0 auto clamp(10px, 1.4dvh, 14px);
+    display: grid;
+    place-items: center;
+    padding: clamp(6px, 1.7vw, 8px);
+    border-radius: 10px;
+    background: var(--forest-green);
+    box-shadow: 0 7px 18px rgba(47, 61, 43, 0.12);
+  }
+
+  .hero__miniLogoImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: brightness(0) invert(96%) sepia(10%) saturate(482%) hue-rotate(329deg) brightness(102%);
   }
 
   .hero__tagline {
-    margin-bottom: 22px;
-    font-size: clamp(39px, 11vw, 54px);
+    margin: 0 0 clamp(8px, 1.2dvh, 12px);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(19px, 5.4vw, 24px);
+    line-height: 1.08;
+    letter-spacing: -0.035em;
   }
 
   .hero__logoWrap,
@@ -997,12 +1052,10 @@ button {
   }
 
   .hero__logoWrap {
-    width: min(310px, 76vw);
-    height: auto;
+    width: min(66vw, 270px);
+    height: clamp(162px, 24dvh, 225px);
     aspect-ratio: 741 / 697;
-    margin-left: auto;
-    margin-right: auto;
-    overflow: visible;
+    overflow: hidden;
   }
 
   .hero__logo {
@@ -1012,49 +1065,79 @@ button {
   }
 
   .hero__launch {
-    margin-top: 22px;
-    font-size: clamp(16px, 4.6vw, 18px);
-    letter-spacing: 0.16em;
+    margin-top: clamp(2px, 0.5dvh, 6px);
+    font-size: clamp(13px, 3.8vw, 16px);
+    letter-spacing: 0.25em;
   }
 
   .hero__description {
-    margin-top: 14px;
-    font-size: 16px;
+    margin-top: clamp(8px, 1.1dvh, 12px);
+    font-size: clamp(12px, 3.3vw, 14px);
+    line-height: 1.35;
   }
 
   .notify-form {
-    margin-top: 24px;
+    width: min(88vw, 360px);
+    margin-top: clamp(12px, 1.7dvh, 18px);
   }
 
   .notify-form__row {
     grid-template-columns: 1fr;
+    gap: clamp(7px, 0.9dvh, 9px);
+    border: 0;
+    background: transparent;
+    overflow: visible;
+  }
+
+  .notify-form__input {
+    min-height: clamp(42px, 5.6dvh, 48px);
+    padding: 10px 15px;
+    border: 1px solid rgba(47, 61, 43, 0.5);
+    border-radius: 8px;
+    background: rgba(251, 244, 234, 0.92);
+    font-size: clamp(12px, 3.5vw, 15px);
   }
 
   .notify-form__button {
-    min-height: 54px;
+    min-height: clamp(41px, 5.4dvh, 47px);
+    border-radius: 7px;
+    font-size: clamp(11px, 3vw, 13px);
+    letter-spacing: 0.18em;
+  }
+
+  .notify-form__message {
+    position: absolute;
+    right: 20px;
+    left: 20px;
+    margin-top: 4px;
+    font-size: 10px;
   }
 
   .hero__divider {
-    margin-top: 22px;
+    width: min(220px, 58vw);
+    margin-top: clamp(8px, 1.1dvh, 12px);
     margin-left: auto;
     margin-right: auto;
+    gap: 12px;
+  }
+
+  .hero__dividerLeaf {
+    width: 15px;
+    height: 15px;
+    flex-basis: 15px;
   }
 
   .hero__visual {
-    position: relative;
-    inset: auto;
-    width: calc(100% + 40px);
-    height: min(126vw, 650px);
-    margin-top: 20px;
-    margin-left: -20px;
+    position: absolute;
+    z-index: 2;
+    inset: auto 0 0;
+    width: 100%;
+    height: 44dvh;
+    margin: 0;
   }
 
   .hero__visual::before {
-    inset: 0;
-    width: 100%;
-    background:
-      linear-gradient(to right, #f7edde 0%, transparent 12%, transparent 88%, #f5ead8 100%),
-      linear-gradient(to bottom, #f5ead8 0%, transparent 10%, transparent 88%, #f5ead8 100%);
+    display: none;
   }
 
   .hero__imageGlow {
@@ -1063,21 +1146,52 @@ button {
 
   .hero__image {
     top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    object-position: center;
+    right: auto;
+    bottom: auto;
+    left: 0;
+    width: 100vw;
+    height: auto;
+    max-width: none;
+    object-fit: initial;
+    object-position: initial;
     transform: none;
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 7%, black 94%, transparent 100%);
-    mask-image: linear-gradient(to bottom, transparent 0%, black 7%, black 94%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 5%, black 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 5%, black 100%);
   }
 
   .footer {
-    padding: 0 20px 28px;
+    position: absolute;
+    z-index: 10;
+    bottom: max(10px, env(safe-area-inset-bottom));
+    padding: 0 20px;
+    display: block;
     justify-content: center;
-    flex-wrap: wrap;
+    color: var(--forest-green);
+    font-size: clamp(10px, 3vw, 12px);
     text-align: center;
+  }
+
+  .footer__links {
+    justify-content: center;
+    gap: 20px;
+    margin-top: 5px;
+  }
+
+  .footer__links a {
+    gap: 0;
+  }
+
+  .footer__links span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+
+  .footer__links svg {
+    width: clamp(20px, 6vw, 25px);
+    height: clamp(20px, 6vw, 25px);
   }
 }
 
@@ -1087,21 +1201,51 @@ button {
     padding-right: 16px;
   }
 
-  .hero__visual {
-    width: calc(100% + 32px);
-    margin-left: -16px;
+  .hero__launch {
+    letter-spacing: 0.24em;
+  }
+}
+
+@media (max-width: 720px) and (max-height: 760px) {
+  .hero {
+    padding-top: max(10px, env(safe-area-inset-top));
+  }
+
+  .hero__miniLogo {
+    width: 42px;
+    height: 42px;
+    margin-bottom: 7px;
   }
 
   .hero__tagline {
-    font-size: 43px;
+    margin-bottom: 4px;
+    font-size: 17px;
+  }
+
+  .hero__logoWrap {
+    width: min(55vw, 220px);
+    height: 145px;
   }
 
   .hero__launch {
-    font-size: 16px;
-    letter-spacing: 0.16em;
+    margin-top: 0;
   }
 
-  .notify-form__input {
-    text-align: center;
+  .hero__divider,
+  .hero__description {
+    margin-top: 5px;
+  }
+
+  .notify-form {
+    margin-top: 8px;
+  }
+
+  .notify-form__input,
+  .notify-form__button {
+    min-height: 37px;
+  }
+
+  .hero__visual {
+    height: 40dvh;
   }
 }

@@ -9,6 +9,16 @@ export default function HeroSection() {
     <section className="hero">
       <div className="hero__content">
         <div className="hero__intro">
+          <div className="hero__miniLogo">
+            <Image
+              src="/images/logo/fittfox-logo-mark.webp"
+              alt="FITT FOX"
+              width={741}
+              height={697}
+              className="hero__miniLogoImage"
+            />
+          </div>
+
           <p className="hero__tagline">
             Indian superfoods,
             <br />
@@ -32,23 +42,23 @@ export default function HeroSection() {
         <div className="hero__signup">
           <p className="hero__launch">{brand.launchText}</p>
 
-          <p className="hero__description">
-            Better-for-you Indian nutrition, coming soon.
-          </p>
-
-          <NotifyForm />
-
           <div className="hero__divider">
             <span />
             <Image
               src="/images/logo/fittfox-leaf.svg"
-              alt="FITT FOX leaf icon"
+              alt=""
               width={28}
               height={28}
               className="hero__dividerLeaf"
             />
             <span />
           </div>
+
+          <p className="hero__description">
+            Better-for-you Indian nutrition, coming soon.
+          </p>
+
+          <NotifyForm />
         </div>
       </div>
 

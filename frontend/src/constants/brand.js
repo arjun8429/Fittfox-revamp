@@ -1,19 +1,7 @@
-// export const brand = {
-//     name: "FITT FOX",
-//     tagline: "Indian superfoods, reimagined.",
-//     launchText: "LAUNCHING SOON",
-//     description: "Better-for-you Indian nutrition, coming soon.",
-//     emailPlaceholder: "Your email address",
-//     notifyButton: "Notify Me",
-//     followText: "Follow our journey",
-//     instagramUrl: "https://www.instagram.com/",
-//     linkedinUrl: "https://www.linkedin.com/",
-//   };
-
 export const brand = {
     name: "FITT FOX",
     tagline: "Indian superfoods, reimagined.",
-    launchText: "LAUNCHING SOON",
+    launchText: "𝖮𝗎𝗋 𝖿𝗂𝗋𝗌𝗍 𝖽𝗋𝗈𝗉 𝗂𝗌 𝖻𝗋𝖾𝗐𝗂𝗇𝗀!!",
     description: "Better-for-you Indian nutrition, coming soon.",
     emailPlaceholder: "Your email address",
     notifyButton: "Notify Me",

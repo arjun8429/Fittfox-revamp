@@ -9,16 +9,6 @@ export default function HeroSection() {
     <section className="hero">
       <div className="hero__content">
         <div className="hero__intro">
-          <div className="hero__miniLogo">
-            <Image
-              src="/images/logo/fittfox-logo-mark.webp"
-              alt="FITT FOX"
-              width={741}
-              height={697}
-              className="hero__miniLogoImage"
-            />
-          </div>
-
           <p className="hero__tagline">
             Indian superfoods,
             <br />

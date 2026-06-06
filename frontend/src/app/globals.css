@@ -530,8 +530,9 @@ button {
   text-align: center;
 }
 
-.hero__miniLogo {
-  display: none;
+.hero__miniLogo,
+.navbar {
+  display: none !important;
 }
 
 .hero__tagline {
@@ -568,8 +569,9 @@ button {
   color: var(--forest-green);
   font-size: clamp(18px, min(1.65vw, 2.7vh), 27px);
   font-weight: 800;
-  letter-spacing: clamp(0.2em, 1vw, 0.38em);
-  white-space: nowrap;
+  line-height: 1.25;
+  letter-spacing: 0.04em;
+  text-wrap: balance;
 }
 
 .hero__description {
@@ -978,7 +980,7 @@ button {
     width: 100%;
     height: 100dvh;
     min-height: 0;
-    padding: max(18px, env(safe-area-inset-top)) 20px
+    padding: max(12px, env(safe-area-inset-top)) 20px
       max(16px, env(safe-area-inset-bottom));
     overflow: hidden;
     text-align: center;
@@ -993,10 +995,10 @@ button {
     background: linear-gradient(
       to bottom,
       var(--beige-soft) 0%,
-      var(--beige-soft) 55%,
-      rgba(251, 244, 234, 0.98) 59%,
-      rgba(251, 244, 234, 0.72) 63%,
-      transparent 69%
+      var(--beige-soft) 51%,
+      rgba(251, 244, 234, 0.98) 55%,
+      rgba(251, 244, 234, 0.72) 60%,
+      transparent 66%
     );
   }
 
@@ -1018,27 +1020,8 @@ button {
     margin-left: auto;
   }
 
-  .hero__miniLogo {
-    width: clamp(46px, 12vw, 54px);
-    height: clamp(46px, 12vw, 54px);
-    margin: 0 auto clamp(10px, 1.4dvh, 14px);
-    display: grid;
-    place-items: center;
-    padding: clamp(6px, 1.7vw, 8px);
-    border-radius: 10px;
-    background: var(--forest-green);
-    box-shadow: 0 7px 18px rgba(47, 61, 43, 0.12);
-  }
-
-  .hero__miniLogoImage {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    filter: brightness(0) invert(96%) sepia(10%) saturate(482%) hue-rotate(329deg) brightness(102%);
-  }
-
   .hero__tagline {
-    margin: 0 0 clamp(8px, 1.2dvh, 12px);
+    margin: 0 0 clamp(4px, 0.7dvh, 8px);
     font-family: Georgia, "Times New Roman", serif;
     font-size: clamp(19px, 5.4vw, 24px);
     line-height: 1.08;
@@ -1052,8 +1035,8 @@ button {
   }
 
   .hero__logoWrap {
-    width: min(66vw, 270px);
-    height: clamp(162px, 24dvh, 225px);
+    width: min(68vw, 280px);
+    height: clamp(170px, 25dvh, 232px);
     aspect-ratio: 741 / 697;
     overflow: hidden;
   }
@@ -1066,19 +1049,22 @@ button {
 
   .hero__launch {
     margin-top: clamp(2px, 0.5dvh, 6px);
-    font-size: clamp(13px, 3.8vw, 16px);
-    letter-spacing: 0.25em;
+    max-width: 360px;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: clamp(14px, 4.1vw, 18px);
+    letter-spacing: 0.025em;
   }
 
   .hero__description {
-    margin-top: clamp(8px, 1.1dvh, 12px);
+    margin-top: clamp(6px, 0.9dvh, 10px);
     font-size: clamp(12px, 3.3vw, 14px);
     line-height: 1.35;
   }
 
   .notify-form {
     width: min(88vw, 360px);
-    margin-top: clamp(12px, 1.7dvh, 18px);
+    margin-top: clamp(9px, 1.3dvh, 14px);
   }
 
   .notify-form__row {
@@ -1115,7 +1101,7 @@ button {
 
   .hero__divider {
     width: min(220px, 58vw);
-    margin-top: clamp(8px, 1.1dvh, 12px);
+    margin-top: clamp(6px, 0.8dvh, 9px);
     margin-left: auto;
     margin-right: auto;
     gap: 12px;
@@ -1132,7 +1118,7 @@ button {
     z-index: 2;
     inset: auto 0 0;
     width: 100%;
-    height: 44dvh;
+    height: 49dvh;
     margin: 0;
   }
 
@@ -1145,15 +1131,12 @@ button {
   }
 
   .hero__image {
-    top: 0;
-    right: auto;
-    bottom: auto;
-    left: 0;
-    width: 100vw;
-    height: auto;
-    max-width: none;
-    object-fit: initial;
-    object-position: initial;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+    object-position: center top;
     transform: none;
     -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 5%, black 100%);
     mask-image: linear-gradient(to bottom, transparent 0%, black 5%, black 100%);
@@ -1202,7 +1185,7 @@ button {
   }
 
   .hero__launch {
-    letter-spacing: 0.24em;
+    max-width: 330px;
   }
 }
 
@@ -1211,14 +1194,8 @@ button {
     padding-top: max(10px, env(safe-area-inset-top));
   }
 
-  .hero__miniLogo {
-    width: 42px;
-    height: 42px;
-    margin-bottom: 7px;
-  }
-
   .hero__tagline {
-    margin-bottom: 4px;
+    margin-bottom: 2px;
     font-size: 17px;
   }
 
@@ -1246,6 +1223,6 @@ button {
   }
 
   .hero__visual {
-    height: 40dvh;
+    height: 46dvh;
   }
 }

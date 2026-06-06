@@ -963,32 +963,29 @@ button {
 
 @media (max-width: 720px) {
   html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 16px;
-  }
-
-  html,
-  body {
     height: auto;
     overflow-x: hidden;
     overflow-y: auto;
-    overscroll-behavior-x: none;
+    scroll-behavior: smooth;
   }
 
   body {
+    height: auto;
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: visible;
     -webkit-overflow-scrolling: touch;
-    touch-action: pan-y;
   }
 
   .site-page {
     width: 100%;
-    min-height: 100dvh;
+    min-height: 100vh;
     overflow: visible;
   }
 
   .hero {
     width: 100%;
-    min-height: 100dvh;
+    min-height: 0;
     padding: max(12px, env(safe-area-inset-top)) 20px
       0;
     overflow: visible;
@@ -1018,7 +1015,7 @@ button {
   }
 
   .hero__tagline {
-    margin: 0 0 clamp(14px, 2dvh, 20px);
+    margin: 0 0 clamp(24px, 7vw, 34px);
     font-family: Georgia, "Times New Roman", serif;
     font-size: clamp(15px, 4.5vw, 22px);
     line-height: 1.08;
@@ -1034,7 +1031,7 @@ button {
 
   .hero__logoWrap {
     width: min(68vw, 280px);
-    height: clamp(170px, 25dvh, 232px);
+    height: auto;
     aspect-ratio: 741 / 697;
     overflow: hidden;
   }
@@ -1046,7 +1043,7 @@ button {
   }
 
   .hero__launch {
-    margin-top: clamp(2px, 0.5dvh, 6px);
+    margin-top: clamp(2px, 1vw, 6px);
     max-width: 360px;
     margin-right: auto;
     margin-left: auto;
@@ -1055,26 +1052,26 @@ button {
   }
 
   .hero__description {
-    margin-top: clamp(6px, 0.9dvh, 10px);
+    margin-top: clamp(6px, 2vw, 10px);
     font-size: clamp(12px, 3.3vw, 14px);
     line-height: 1.35;
   }
 
   .notify-form {
     width: min(88vw, 360px);
-    margin-top: clamp(9px, 1.3dvh, 14px);
+    margin-top: clamp(9px, 2.8vw, 14px);
   }
 
   .notify-form__row {
     grid-template-columns: 1fr;
-    gap: clamp(7px, 0.9dvh, 9px);
+    gap: clamp(7px, 2vw, 9px);
     border: 0;
     background: transparent;
     overflow: visible;
   }
 
   .notify-form__input {
-    min-height: clamp(42px, 5.6dvh, 48px);
+    min-height: clamp(42px, 12vw, 48px);
     padding: 10px 15px;
     border: 1px solid rgba(47, 61, 43, 0.5);
     border-radius: 8px;
@@ -1083,7 +1080,7 @@ button {
   }
 
   .notify-form__button {
-    min-height: clamp(41px, 5.4dvh, 47px);
+    min-height: clamp(41px, 12vw, 47px);
     border-radius: 7px;
     font-size: clamp(11px, 3vw, 13px);
     letter-spacing: 0.18em;
@@ -1099,7 +1096,7 @@ button {
 
   .hero__divider {
     width: min(220px, 58vw);
-    margin-top: clamp(6px, 0.8dvh, 9px);
+    margin-top: clamp(6px, 2vw, 9px);
     margin-left: auto;
     margin-right: auto;
     gap: 12px;
@@ -1117,7 +1114,7 @@ button {
     inset: auto;
     width: calc(100% + 40px);
     height: auto;
-    margin: clamp(24px, 3.5dvh, 36px) -20px 0;
+    margin: clamp(24px, 7vw, 36px) -20px 0;
     overflow: hidden;
     background: var(--beige-soft);
   }
@@ -1140,31 +1137,31 @@ button {
     object-fit: contain;
     object-position: center;
     transform: none;
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 3.5%, black 100%);
-    mask-image: linear-gradient(to bottom, transparent 0%, black 3.5%, black 100%);
+    -webkit-mask-image: none;
+    mask-image: none;
   }
 
   .footer {
-    position: relative;
+    position: absolute;
     z-index: 10;
-    bottom: auto;
+    bottom: max(16px, env(safe-area-inset-bottom));
+    left: 50%;
     width: fit-content;
-    margin: -88px auto 0;
-    padding: 8px 12px max(8px, env(safe-area-inset-bottom));
+    margin: 0;
+    padding: 8px 12px;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 12px;
     border: 1px solid rgba(47, 61, 43, 0.22);
     border-radius: 999px;
-    background: rgba(251, 244, 234, 0.88);
+    background: var(--beige-soft);
     box-shadow: 0 8px 24px rgba(47, 61, 43, 0.2);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
     color: var(--forest-green);
     font-size: clamp(11px, 3vw, 13px);
     font-weight: 700;
     text-align: center;
+    transform: translateX(-50%);
   }
 
   .footer__links {
@@ -1232,13 +1229,13 @@ button {
   }
 
   .hero__tagline {
-    margin-bottom: 2px;
+    margin-bottom: 20px;
     font-size: 17px;
   }
 
   .hero__logoWrap {
     width: min(55vw, 220px);
-    height: 145px;
+    height: auto;
   }
 
   .hero__launch {

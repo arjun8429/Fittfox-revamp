@@ -59,7 +59,7 @@ export default function HeroSection() {
           width={1122}
           height={1402}
           priority
-          sizes="(max-width: 768px) 92vw, 48vw"
+          sizes="(max-width: 720px) 100vw, 48vw"
           className="hero__image"
         />
       </div>

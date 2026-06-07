@@ -42,9 +42,7 @@ export default function HeroSection() {
             <span />
           </div>
 
-          <p className="hero__description">
-            Better-for-you Indian nutrition, coming soon.
-          </p>
+          <p className="hero__description">{brand.description}</p>
 
           <NotifyForm />
         </div>

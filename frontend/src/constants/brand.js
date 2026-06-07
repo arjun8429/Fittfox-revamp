@@ -7,5 +7,5 @@ export const brand = {
     notifyButton: "Notify Me",
     followText: "Follow our journey",
     instagramUrl: "https://www.instagram.com/fittfox.in/",
-    linkedinUrl: "https://www.linkedin.com/",
+    linkedinUrl: "https://www.linkedin.com/company/fitt-fox/about/?viewAsMember=true",
   };
